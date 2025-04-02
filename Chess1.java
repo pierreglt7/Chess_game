@@ -72,8 +72,8 @@ public class Chess1 {
 				int ligne_a = Arrive.charAt(1);
 				
 				temp = board[ligne_d][colonne_d];
-	        	board[ligne_a][colonne_a] = empty();
-	        	board[ligne_a][colonne_a] = temp;
+	        		board[ligne_a][colonne_a] = empty();
+	        		board[ligne_a][colonne_a] = temp;
 			}	
 			
 			else {
