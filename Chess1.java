@@ -7,10 +7,6 @@ public class Chess {
 	public static void main(String[] args) {
 		new Chess().execute();
 		
-		
-		
-		
-		myObj.close();
 	}
 
 	static public final int ROOK_WHITE = 0x2656; 
@@ -49,12 +45,9 @@ public class Chess {
 				String Arrivé = myObj.nextLine();   // Coup de depart
 				
 		}
+		myObj.close();
 		
-			while()
-		System.out.println("Depart :");  // Demande à l'utilisateur quel piece il veut deplacer
-		String Depart = myObj.nextLine();   // Coup de depart
-		System.out.println("Arrivé :");  // Demande à l'utilisateur quel piece il veut deplacer
-		String Arrivé = myObj.nextLine();   // Coup de depart
+			
 		// 
 		System.out.println("8|"+show(ROOK_BLACK)+"|"+show(KNIGHT_BLACK)+"|"+show(BISHOP_BLACK)+"|"+show(QUEEN_BLACK)+"|"+show(KING_BLACK)+"|"+show(BISHOP_BLACK)+"|"+show(KNIGHT_BLACK)+"|"+show(ROOK_BLACK)+"|");
 		System.out.println("7|"+show(PAWN_BLACK)+"|"+show(PAWN_BLACK)+"|"+show(PAWN_BLACK)+"|"+show(PAWN_BLACK)+"|"+show(PAWN_BLACK)+"|"+show(PAWN_BLACK)+"|"+show(PAWN_BLACK)+"|"+show(PAWN_BLACK)+"|");
