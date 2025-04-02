@@ -86,7 +86,26 @@ public class Chess1 {
 		
 	}
 	
-	static init_affiche
+	public static String[][] init_affiche() {
+	        String[][] board = new String[8][8];
+	
+	        // Placement des pièces noires
+	        board[0] = new String[]{show(ROOK_BLACK), show(KNIGHT_BLACK), show(BISHOP_BLACK), show(QUEEN_BLACK), show(KING_BLACK), show(BISHOP_BLACK), show(KNIGHT_BLACK), show(ROOK_BLACK)};
+	        board[1] = new String[]{show(PAWN_BLACK), show(PAWN_BLACK), show(PAWN_BLACK), show(PAWN_BLACK), show(PAWN_BLACK), show(PAWN_BLACK), show(PAWN_BLACK), show(PAWN_BLACK)};
+	
+	        // Cases vides
+	        for (int i = 2; i < 6; i++) {
+	            for (int j = 0; j < 8; j++) {
+	                board[i][j] = empty();
+	            }
+	        }
+	
+	        // Placement des pièces blanches
+	        board[6] = new String[]{show(PAWN_WHITE), show(PAWN_WHITE), show(PAWN_WHITE), show(PAWN_WHITE), show(PAWN_WHITE), show(PAWN_WHITE), show(PAWN_WHITE), show(PAWN_WHITE)};
+	        board[7] = new String[]{show(ROOK_WHITE), show(KNIGHT_WHITE), show(BISHOP_WHITE), show(QUEEN_WHITE), show(KING_WHITE), show(BISHOP_WHITE), show(KNIGHT_WHITE), show(ROOK_WHITE)};
+	
+	        return board;
+   	}
 	
 	private String empty() 
 	{
