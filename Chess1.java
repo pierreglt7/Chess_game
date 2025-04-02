@@ -1,11 +1,16 @@
 package projet;
+
 import java.util.Scanner;
 
 import in360.tp2.Piece;
 
-public class Chess {
+public class Chess1 {
 	public static void main(String[] args) {
-		new Chess().execute();
+		new Chess1().execute();
+		
+		
+		
+		
 		
 	}
 
@@ -32,23 +37,6 @@ public class Chess {
 	
 	private void execute() 
 	{
-		int nb_coup=0;
-		Scanner myObj = new Scanner(System.in);  // Creation du scanner 
-		
-		System.out.println("Etes vous les blancs ou les noires (0/1) ?");
-		String BouN = myObj.nextLine();  // reponse si blanc ou noir
-		if(BouN = Blanc && nb_coup=0|| nb_coup>0) {
-			while(true)
-				System.out.println("Depart :");  // Demande à l'utilisateur quel piece il veut deplacer
-				String Depart = myObj.nextLine();   // Coup de depart
-				System.out.println("Arrivé :");  // Demande à l'utilisateur quel piece il veut deplacer
-				String Arrivé = myObj.nextLine();   // Coup de depart
-				
-		}
-		myObj.close();
-		
-			
-		// 
 		System.out.println("8|"+show(ROOK_BLACK)+"|"+show(KNIGHT_BLACK)+"|"+show(BISHOP_BLACK)+"|"+show(QUEEN_BLACK)+"|"+show(KING_BLACK)+"|"+show(BISHOP_BLACK)+"|"+show(KNIGHT_BLACK)+"|"+show(ROOK_BLACK)+"|");
 		System.out.println("7|"+show(PAWN_BLACK)+"|"+show(PAWN_BLACK)+"|"+show(PAWN_BLACK)+"|"+show(PAWN_BLACK)+"|"+show(PAWN_BLACK)+"|"+show(PAWN_BLACK)+"|"+show(PAWN_BLACK)+"|"+show(PAWN_BLACK)+"|");
 		System.out.println("6|"+empty()+"|"+empty()+"|"+empty()+"|"+empty()+"|"+empty()+"|"+empty()+"|"+empty()+"|"+empty()+"|");
@@ -59,25 +47,63 @@ public class Chess {
 		System.out.println("1|"+show(ROOK_WHITE)+"|"+show(KNIGHT_WHITE)+"|"+show(BISHOP_WHITE)+"|"+show(QUEEN_WHITE)+"|"+show(KING_WHITE)+"|"+show(BISHOP_WHITE)+"|"+show(KNIGHT_WHITE)+"|"+show(ROOK_WHITE)+"|");
 		System.out.println("  A B C D E F G H");
 		
+		String[][] board = init_affiche();  // tableau de jeu
+		afficher(board);  // Affichage 
+		
+		
+		int nb_coup=0;
+		String temp;
+		Scanner myObj = new Scanner(System.in);  // Creation du scanner 
+		
+		System.out.println("Etes vous les blancs ou les noires (0/1) ?");
+		String BouN = myObj.nextLine();  // reponse si blanc ou noir
+		while(true){
+			
+			if(BouN.equals("0") && nb_coup ==0|| nb_coup>0) {
+				System.out.println("Depart :");  // Demande à l'utilisateur quel piece il veut deplacer
+				String Depart = myObj.nextLine();   // Coup de depart
+				System.out.println("Arrivé :");  // Demande à l'utilisateur quel piece il veut deplacer
+				String Arrive = myObj.nextLine();   // Coup de depart
+				
+				int colonne_d = Depart.charAt(0) - 'A' +1;
+				int ligne_d = Depart.charAt(1);
+				
+				int colonne_a = Arrive.charAt(0) - 'A' +1;
+				int ligne_a = Arrive.charAt(1);
+				
+				temp = board[ligne_d][colonne_d];
+	        	board[ligne_a][colonne_a] = empty();
+	        	board[ligne_a][colonne_a] = temp;
+			}	
+			
+			else {
+				System.out.println("C'est au blanc de commencer");
+			}
+				
+		}	
+		
+		myObj.close();		
+		
 	}
 	
-	static private Piece[] init_board() {
-    	Piece[] board = {new Piece(show(ROOK_WHITE), "A1"), new Piece(show(ROOK_WHITE), "H1"), new Piece(show(KNIGHT_WHITE), "B1"), new Piece(show(KNIGHT_WHITE), "G1"),
-    					new Piece(show(BISHOP_WHITE), "C1"), new Piece(show(BISHOP_WHITE), "F1"), new Piece(show(QUEEN_WHITE), "D1"), new Piece(show(KING_WHITE), "E1"),
-    					new Piece(show(PAWN_WHITE), "A2"), new Piece(show(PAWN_WHITE), "B2"), new Piece(show(PAWN_WHITE), "C2"), new Piece(show(PAWN_WHITE), "D2"), 
-    					new Piece(show(PAWN_WHITE), "E2"), new Piece(show(PAWN_WHITE), "F2"), new Piece(show(PAWN_WHITE), "G2"), new Piece(show(PAWN_WHITE), "H2"),
-    					new Piece(show(ROOK_BLACK), "A8"), new Piece(show(ROOK_BLACK), "H8"), new Piece(show(KNIGHT_BLACK), "B8"), new Piece(show(KNIGHT_BLACK), "G8"),
-    					new Piece(show(BISHOP_BLACK), "C8"), new Piece(show(BISHOP_BLACK), "F8"), new Piece(show(QUEEN_BLACK), "D8"), new Piece(show(KING_BLACK), "E8"),
-    					new Piece(show(PAWN_BLACK), "A7"), new Piece(show(PAWN_BLACK), "B7"), new Piece(show(PAWN_BLACK), "C7"), new Piece(show(PAWN_BLACK), "D7"), 
-    					new Piece(show(PAWN_BLACK), "E7"), new Piece(show(PAWN_BLACK), "F7"), new Piece(show(PAWN_BLACK), "G7"), new Piece(show(PAWN_BLACK), "H7")};          
-    	return board;
-    	
-	}
+	static init_affiche
 	
 	private String empty() 
 	{
 		return " ";
 	}
+	
+	static private void afficher(String[][] board) {
+    	for (int l=0; l<8; l++) {
+        	System.out.print(8-l);
+        	System.out.print("|");
+        	for (int c=0; c<8; c++) {
+        		System.out.print(board[l][c] + "|");
+        	}
+        	System.out.print("\n");
+        }
+        System.out.println("  A B C D E F G H");
+    } 
 
 
 	private String show(int piece)
